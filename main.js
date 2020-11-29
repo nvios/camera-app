@@ -1,6 +1,7 @@
 'use strict';
 
 const video = document.querySelector('video');
+const param = document.querySelector('#param');
 const switchCamera = document.querySelector('#switchCamera');
 const takePicture = document.querySelector('#takePicture');
 const retake = document.querySelector('#retake');
@@ -12,6 +13,11 @@ canvas.width = 0;
 canvas.height = 0;
 let videoDevices = [];
 let defaultCamera = true;
+
+window.addEventListener('DOMContentLoaded', (e) => {
+  const queryString = window.location.search;
+  param.innerHTML = queryString;
+});
 
 takePicture.onclick = function () {
   canvas.width = video.videoWidth;
