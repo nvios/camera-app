@@ -22,7 +22,7 @@ const constraints = {
 
 function handleError(error) {
   console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
-}
+};
 
 
 function gotDevices(deviceInfos) {
@@ -31,23 +31,24 @@ function gotDevices(deviceInfos) {
   selectors.forEach(select => {
     while (select.firstChild) {
       select.removeChild(select.firstChild);
-    }
+    };
   });
   for (let i = 0; i !== deviceInfos.length; ++i) {
     const deviceInfo = deviceInfos[i];
     const option = document.createElement('option');
     option.value = deviceInfo.deviceId;
-  if (deviceInfo.kind === 'videoinput') {
-      option.text = deviceInfo.label || `camera ${videoSelect.length + 1}`;
-      videoSelect.appendChild(option);
-  }
-  selectors.forEach((select, selectorIndex) => {
-    if (Array.prototype.slice.call(select.childNodes).some(n => n.value === values[selectorIndex])) {
-      select.value = values[selectorIndex];
-    }
-  });
-}
-}
+    if (deviceInfo.kind === 'videoinput') {
+        option.text = deviceInfo.label || `camera ${videoSelect.length + 1}`;
+        videoSelect.appendChild(option);
+    };
+    selectors.forEach((select, selectorIndex) => {
+      if (Array.prototype.slice.call(select.childNodes).some(n => n.value === values[selectorIndex])) {
+        select.value = values[selectorIndex];
+      };
+    });
+  };
+  videoSelect.lastChild.selected = true;
+};
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 
 function gotStream(stream) {
@@ -55,20 +56,21 @@ function gotStream(stream) {
   video.srcObject = stream;
   // Refresh button list in case labels have become available
   return navigator.mediaDevices.enumerateDevices();
-}
+};
 
 function start() {
   if (window.stream) {
     window.stream.getTracks().forEach(track => {
       track.stop();
     });
-  }
+  };
   const videoSource = videoSelect.value;
   const constraints = {
+    audio: false,
     video: { deviceId: videoSource ? { exact: videoSource } : undefined }
   };
   navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
-}
+};
 
 videoSelect.onchange = start;
 
