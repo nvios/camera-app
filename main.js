@@ -94,7 +94,7 @@ function start() {
       track.stop();
     });
   };
-  const videoSource = videoDevices[videoDevices.length - 1];
+  const videoSource = videoDevices[videoDevices.length];
   const constraints = {
     audio: false,
     video: { deviceId: videoSource ? { exact: videoSource } : undefined }
@@ -107,7 +107,7 @@ function submitImage() {
   link.setAttribute('download', 'sennder.png');
   link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
   link.click();
-}
+};
 
 videoSelect.onchange = start;
 
