@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta id="theme-color" name="theme-color" content="#000">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 	<base target="_blank">
 	<style>
 		body {
@@ -21,6 +22,21 @@
 		svg {
 			margin: 10px auto 0px;
 		}
+		.sennder-logo {
+			fill: #ff8300;
+		}
+		#takePicture {
+			border: 2px solid;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 50px;
+			height: 50px;    
+		}
+		i {
+			padding: 2px 0 0 1px;
+		}
 		#container {
 			margin: auto;
 			text-align: center;
@@ -29,9 +45,6 @@
 			video, canvas {
 				width: 100%;
 			}
-		}
-		.sennder-logo {
-			fill: #ff8300;
 		}
 	</style>
 	<title>getUserMedia to canvas</title>
@@ -76,7 +89,7 @@
 		<video playsinline autoplay></video>
 		<canvas style='display:none'></canvas>
 		<br>
-		<button id='takePicture'>Take picture</button>
+		<button id='takePicture'><i class="material-icons-outlined md-48">camera_alt</i></button>
 		<button id='retake' style='display:none'>Retake</button>
 		<button id='submit' style='display:none'>Send PoD</button>
 	</div>
