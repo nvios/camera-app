@@ -94,7 +94,7 @@ function start() {
       track.stop();
     });
   };
-  const videoSource = videoSelect.value;
+  const videoSource = videoDevices[videoDevices.length - 1];
   const constraints = {
     audio: false,
     video: { deviceId: videoSource ? { exact: videoSource } : undefined }
