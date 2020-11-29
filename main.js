@@ -1,6 +1,7 @@
 'use strict';
 
 const video = document.querySelector('video');
+const switchCamera = document.querySelector('#switchCamera');
 const takePicture = document.querySelector('#takePicture');
 const retake = document.querySelector('#retake');
 const submit = document.querySelector('#submit');
@@ -12,11 +13,16 @@ canvas.height = 0;
 let videoDevices = [];
 
 takePicture.onclick = function () {
+  start()
+};
+
+takePicture.onclick = function () {
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
   canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
   video.style.display = "none";
   takePicture.style.display = "none";
+  switchCamera.style.display = "none";
   canvas.style.display = "block";
   retake.style.display = "inline";
   submit.style.display = "inline";
@@ -27,7 +33,8 @@ retake.onclick = function () {
   retake.style.display = "none";
   submit.style.display = "none";
   video.style.display = "block";
-  takePicture.style.display = "block";
+  takePicture.style.display = "inline";
+  switchCamera.style.display = "inline";
 };
 
 submit.onclick = function () {
@@ -35,7 +42,8 @@ submit.onclick = function () {
   retake.style.display = "none";
   submit.style.display = "none";
   video.style.display = "block";
-  takePicture.style.display = "block";
+  takePicture.style.display = "inline";
+  switchCamera.style.display = "inline";
   submitImage();
   alert("Success!\n\n\Your snapshot was submitted to sennder")
 };
@@ -75,7 +83,7 @@ function getDevices(deviceInfos) {
   console.log(videoDevices[videoDevices.length - 1])
 };
 
-navigator.mediaDevices.enumerateDevices().then(getDevices).catch(handleError);
+//navigator.mediaDevices.enumerateDevices().then(getDevices).catch(handleError);
 
 function gotStream(stream) {
   window.stream = stream; // make stream available to console
