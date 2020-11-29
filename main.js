@@ -40,8 +40,6 @@ function gotDevices(deviceInfos) {
     if (deviceInfo.kind === 'videoinput') {
         option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
         videoSelect.appendChild(option);
-        videoSelect.children.selected = false;
-        videoSelect.lastChild.selected = true;
     };
     selectors.forEach((select, selectorIndex) => {
       if (Array.prototype.slice.call(select.childNodes).some(n => n.value === values[selectorIndex])) {
