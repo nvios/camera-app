@@ -14,10 +14,8 @@ canvas.height = 0;
 let videoDevices = [];
 let defaultCamera = true;
 
-window.addEventListener('DOMContentLoaded', (e) => {
-  const queryString = window.location.search;
-  param.innerHTML = "queryString";
-});
+const queryString = window.location.search;
+param.innerHTML = queryString;
 
 takePicture.onclick = function () {
   canvas.width = video.videoWidth;
