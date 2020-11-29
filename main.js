@@ -11,10 +11,7 @@ const canvas = window.canvas = document.querySelector('canvas');
 canvas.width = 0;
 canvas.height = 0;
 let videoDevices = [];
-
-switchCamera.onclick = function () {
-  start()
-};
+let defaultCamera = true;
 
 takePicture.onclick = function () {
   canvas.width = video.videoWidth;
@@ -117,6 +114,7 @@ function submitImage() {
   link.click();
 };
 
-videoSelect.onchange = start;
+//videoSelect.onchange = start;
+switchCamera.onclick = start;
 
 start();
