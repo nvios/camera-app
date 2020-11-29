@@ -63,7 +63,19 @@ function gotDevices(deviceInfos) {
   };
 };
 
-navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+function getDevices(deviceInfos) {
+  let videoDevices = [];
+  console.log(deviceInfos)
+  for (let i = 0; i !== deviceInfos.length; ++i) {
+    const deviceInfo = deviceInfos[i];
+    if (deviceInfo.kind === 'videoinput') {
+      videoDevices.push(deviceInfo.label, deviceInfo.groupId)
+    };
+  };
+  console.log(videoDevices)
+};
+
+navigator.mediaDevices.enumerateDevices().then(getDevices).catch(handleError);
 
 function gotStream(stream) {
   window.stream = stream; // make stream available to console
