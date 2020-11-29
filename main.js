@@ -72,7 +72,7 @@ function getDevices(deviceInfos) {
       videoDevices.push(deviceInfo.deviceId)
     };
   };
-  console.log(videoDevices + "B2")
+  console.log(videoDevices[videoDevices.length - 1])
 };
 
 navigator.mediaDevices.enumerateDevices().then(getDevices).catch(handleError);
@@ -94,7 +94,7 @@ function start() {
       track.stop();
     });
   };
-  const videoSource = videoDevices[videoDevices.length];
+  const videoSource = videoDevices[videoDevices.length - 1];
   const constraints = {
     audio: false,
     video: { deviceId: videoSource ? { exact: videoSource } : undefined }
