@@ -16,7 +16,7 @@ let defaultCamera = true;
 
 window.addEventListener('DOMContentLoaded', (e) => {
   const queryString = window.location.search;
-  param.innerHTML = queryString;
+  param.innerHTML = "queryString";
 });
 
 takePicture.onclick = function () {
