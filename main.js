@@ -6,7 +6,6 @@ const retake = document.querySelector('#retake');
 const submit = document.querySelector('#submit');
 const videoSelect = document.querySelector('select#videoSource');
 const selectors = [videoSelect];
-
 const canvas = window.canvas = document.querySelector('canvas');
 canvas.width = 0;
 canvas.height = 0;
@@ -36,6 +35,7 @@ submit.onclick = function () {
   submit.style.display = "none";
   video.style.display = "block";
   takePicture.style.display = "block";
+  submitImage();
   alert("Success!\n\n\Your snapshot was submitted to sennder")
 };
 
@@ -89,6 +89,13 @@ function start() {
   };
   navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
 };
+
+function submitImage() {
+  const link = document.createElement('a')
+  link.setAttribute('download', 'sennder.png');
+  link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+  link.click();
+}
 
 videoSelect.onchange = start;
 
