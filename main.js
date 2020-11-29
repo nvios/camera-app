@@ -12,7 +12,7 @@ canvas.width = 0;
 canvas.height = 0;
 let videoDevices = [];
 
-takePicture.onclick = function () {
+switchCamera.onclick = function () {
   start()
 };
 
