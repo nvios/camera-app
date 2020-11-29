@@ -36,7 +36,7 @@ submit.onclick = function () {
   submit.style.display = "none";
   video.style.display = "block";
   takePicture.style.display = "block";
-  alert("Success!\n\n\Your snapshot was submitted to > 𝕤 𝕖 𝕟 𝕟 𝕕 𝕖 𝕣")
+  alert("Success!\n\n\Your snapshot was submitted to sennder")
 };
 
 function gotDevices(deviceInfos) {
