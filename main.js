@@ -38,8 +38,10 @@ function gotDevices(deviceInfos) {
     const option = document.createElement('option');
     option.value = deviceInfo.deviceId;
     if (deviceInfo.kind === 'videoinput') {
-        option.text = deviceInfo.label || `camera ${videoSelect.length + 1}`;
+        option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
         videoSelect.appendChild(option);
+        videoSelect.children.selected = false;
+        videoSelect.lastChild.selected = true;
     };
     selectors.forEach((select, selectorIndex) => {
       if (Array.prototype.slice.call(select.childNodes).some(n => n.value === values[selectorIndex])) {
@@ -47,7 +49,6 @@ function gotDevices(deviceInfos) {
       };
     });
   };
-  console.log(videoSelect.lastChild);
 };
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 
