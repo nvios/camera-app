@@ -99,7 +99,7 @@ function start() {
     audio: false,
     video: { deviceId: videoSource ? { exact: videoSource } : undefined }
   };
-  navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
+  navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(getDevices).catch(handleError);
 };
 
 function submitImage() {
