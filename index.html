@@ -19,6 +19,11 @@
 		select, video, canvas, button {
 			margin: 10px auto;
 		}
+		@media only screen and (max-width: 600px) {
+			video, canvas {
+				width: 100%;
+			}
+		}
 	</style>
 	<title>getUserMedia to canvas</title>
 </head>
@@ -28,7 +33,7 @@
 			<label for="videoSource">Video source: </label><select id="videoSource"></select>
 		</div>
 		<video playsinline autoplay></video>
-		<canvas></canvas>
+		<canvas style='display:none'></canvas>
 		<br>
 		<button id='takePicture'>Take picture</button>
 		<button id='retake' style='display:none'>Retake</button>
