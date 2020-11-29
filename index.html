@@ -15,10 +15,11 @@
 			<label for="videoSource">Video source: </label><select id="videoSource"></select>
 		</div>
 		<video playsinline autoplay></video>
-		<br>
-		<button>Take snapshot</button>
-		<br>
 		<canvas></canvas>
+		<br>
+		<button id='takePicture'>Take picture</button>
+		<button id='retake' style='display:none'>Retake</button>
+		<button id='submit' style='display:none'>Send PoD</button>
 	</div>
 	<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 	<script src="main.js" async></script>

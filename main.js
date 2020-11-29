@@ -1,7 +1,9 @@
 'use strict';
 
 const video = document.querySelector('video');
-const button = document.querySelector('button');
+const takePicture = document.querySelector('#takePicture');
+const retake = document.querySelector('#retake');
+const submit = document.querySelector('#submit');
 const videoSelect = document.querySelector('select#videoSource');
 const selectors = [videoSelect];
 
@@ -9,21 +11,33 @@ const canvas = window.canvas = document.querySelector('canvas');
 canvas.width = 0;
 canvas.height = 0;
 
-button.onclick = function () {
+takePicture.onclick = function () {
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
   canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+  video.style.display = "none";
+  takePicture.style.display = "none";
+  canvas.style.display = "block";
+  retake.style.display = "inline";
+  submit.style.display = "inline";
 };
 
-const constraints = {
-  audio: false,
-  video: true
+retake.onclick = function () {
+  canvas.style.display = "none";
+  retake.style.display = "none";
+  submit.style.display = "none";
+  video.style.display = "block";
+  takePicture.style.display = "block";
 };
 
-function handleError(error) {
-  console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
+submit.onclick = function () {
+  canvas.style.display = "none";
+  retake.style.display = "none";
+  submit.style.display = "none";
+  video.style.display = "block";
+  takePicture.style.display = "block";
+  alert("Success!\n\n\Your snapshot was submitted to > 𝕤 𝕖 𝕟 𝕟 𝕕 𝕖 𝕣")
 };
-
 
 function gotDevices(deviceInfos) {
   // Handles being called several times to update labels. Preserve values.
@@ -48,6 +62,7 @@ function gotDevices(deviceInfos) {
     });
   };
 };
+
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 
 function gotStream(stream) {
@@ -55,6 +70,10 @@ function gotStream(stream) {
   video.srcObject = stream;
   // Refresh button list in case labels have become available
   return navigator.mediaDevices.enumerateDevices();
+};
+
+function handleError(error) {
+  console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
 };
 
 function start() {
@@ -66,7 +85,7 @@ function start() {
   const videoSource = videoSelect.value;
   const constraints = {
     audio: false,
-    video: { deviceId: videoSource ? { exact: videoSource } : () => {console.log("something"); return undefined} }
+    video: { deviceId: videoSource ? { exact: videoSource } : undefined }
   };
   navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
 };
