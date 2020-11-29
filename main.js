@@ -47,7 +47,7 @@ function gotDevices(deviceInfos) {
       };
     });
   };
-  videoSelect.lastChild.selected = true;
+  console.log(videoSelect.lastChild);
 };
 navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
 
