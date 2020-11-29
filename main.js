@@ -9,6 +9,7 @@ const selectors = [videoSelect];
 const canvas = window.canvas = document.querySelector('canvas');
 canvas.width = 0;
 canvas.height = 0;
+let videoDevices = [];
 
 takePicture.onclick = function () {
   canvas.width = video.videoWidth;
@@ -63,13 +64,12 @@ function gotDevices(deviceInfos) {
   };
 };
 
+
 function getDevices(deviceInfos) {
-  let videoDevices = [];
-  console.log(deviceInfos)
   for (let i = 0; i !== deviceInfos.length; ++i) {
     const deviceInfo = deviceInfos[i];
     if (deviceInfo.kind === 'videoinput') {
-      videoDevices.push(deviceInfo.label, deviceInfo.value)
+      videoDevices.push(deviceInfo.deviceId)
     };
   };
   console.log(videoDevices)
