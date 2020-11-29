@@ -69,7 +69,7 @@ function getDevices(deviceInfos) {
   for (let i = 0; i !== deviceInfos.length; ++i) {
     const deviceInfo = deviceInfos[i];
     if (deviceInfo.kind === 'videoinput') {
-      videoDevices.push(deviceInfo.label, deviceInfo.groupId)
+      videoDevices.push(deviceInfo.label, deviceInfo.value)
     };
   };
   console.log(videoDevices)
