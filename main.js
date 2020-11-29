@@ -72,7 +72,7 @@ function getDevices(deviceInfos) {
       videoDevices.push(deviceInfo.deviceId)
     };
   };
-  console.log(videoDevices)
+  console.log(videoDevices + "B2")
 };
 
 navigator.mediaDevices.enumerateDevices().then(getDevices).catch(handleError);
