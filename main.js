@@ -16,7 +16,7 @@ let videoDevices = [];
 let defaultCamera = true;
 
 const queryArray = atob(window.location.search.slice(1)).split("&&");
-param.innerHTML = queryArray.length === 2 ? `Transport: ${queryArray[0]} | Reference: ${queryArray[1]}` : 'Invalid URL';
+param.innerHTML = queryArray[0].length > 0 ? `<b>Transport:</b> ${queryArray[0]} <b>&nbsp|&nbsp Reference:</b> ${queryArray[1]}` : 'Invalid URL';
 
 takePicture.onclick = function () {
   canvas.width = video.videoWidth;
