@@ -4,6 +4,7 @@ const video = document.querySelector('video');
 const param = document.querySelector('#param');
 const switchCamera = document.querySelector('#switchCamera');
 const takePicture = document.querySelector('#takePicture');
+const upload = document.querySelector('#upload');
 const retake = document.querySelector('#retake');
 const submit = document.querySelector('#submit');
 const videoSelect = document.querySelector('select#videoSource');
@@ -24,6 +25,7 @@ takePicture.onclick = function () {
   video.style.display = "none";
   takePicture.style.display = "none";
   switchCamera.style.display = "none";
+  upload.style.display = "none";
   canvas.style.display = "block";
   retake.style.display = "inline";
   submit.style.display = "inline";
@@ -36,6 +38,7 @@ retake.onclick = function () {
   video.style.display = "block";
   takePicture.style.display = "inline";
   switchCamera.style.display = "inline";
+  upload.style.display = "inline";
 };
 
 submit.onclick = function () {
@@ -45,8 +48,22 @@ submit.onclick = function () {
   video.style.display = "block";
   takePicture.style.display = "inline";
   switchCamera.style.display = "inline";
+  upload.style.display = "inline";
   submitImage();
   alert("Success!\n\n\Your snapshot was submitted to sennder")
+};
+
+upload.onclick = function () {
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+  video.style.display = "none";
+  takePicture.style.display = "none";
+  switchCamera.style.display = "none";
+  upload.style.display = "none";
+  canvas.style.display = "block";
+  retake.style.display = "inline";
+  submit.style.display = "inline";
 };
 
 function gotDevices(deviceInfos) {
