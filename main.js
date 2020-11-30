@@ -16,7 +16,15 @@ let videoDevices = [];
 let defaultCamera = true;
 
 const queryArray = atob(window.location.search.slice(1)).split("&&");
-param.innerHTML = queryArray[0].length > 0 ? `<b>Transport:</b> ${queryArray[0]} <b>&nbsp|&nbsp Reference:</b> ${queryArray[1]}` : 'Invalid URL';
+param.innerHTML = queryArray[0].length > 0 ? `<b>Transport:</b> ${queryArray[0]} <b>&nbsp|&nbsp Reference:</b> ${queryArray[1]}` : 'Invalid URL: no order details available';
+
+(function deactivateButtons() {
+  if (queryArray[0].length === 0) {
+    takePicture.disabled = true;
+    switchCamera.disabled = true;
+    upload.disabled = true;
+  };
+}());
 
 takePicture.onclick = function () {
   canvas.width = video.videoWidth;
