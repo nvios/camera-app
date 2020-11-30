@@ -15,7 +15,7 @@ canvas.height = 0;
 let videoDevices = [];
 let defaultCamera = true;
 
-const queryString = window.location.search;
+const queryString = window.location.search.slice(1).split("&&").join(" ");
 param.innerHTML = queryString;
 
 takePicture.onclick = function () {
