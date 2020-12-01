@@ -108,8 +108,6 @@ function getDevices(deviceInfos) {
   };
 };
 
-//navigator.mediaDevices.enumerateDevices().then(getDevices).catch(handleError);
-
 function gotStream(stream) {
   window.stream = stream; // make stream available to console
   video.srcObject = stream;
@@ -143,7 +141,6 @@ function submitImage() {
   link.click();
 };
 
-//videoSelect.onchange = start;
 switchCamera.onclick = start;
 
 start();
